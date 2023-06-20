@@ -1,0 +1,41 @@
+:root {
+  --backgroundColor: #0f0200;
+  --textColor1: #594c49;
+  --btnColor1: #fe4d13;
+}
+body {
+  color: white;
+  background-color: var(--backgroundColor);
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  text-align: center;
+}
+
+/* custom styles */
+.btn1 {
+  cursor: pointer;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
+  border: 1px solid var(--textColor1);
+  border-radius: 50px;
+}
+.btn2 {
+  cursor: pointer;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  width: 300px;
+  height: 70px;
+  background-color: var(--btnColor1);
+  line-height: 70px;
+  font-size: 25px;
+  border-radius: 50px;
+}

@@ -1,0 +1,22 @@
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        li{
+            display: inline;
+            padding: 1rem;
+            a{
+                display: inline-block;
+                width: 60px;
+                color: var(--textColor1);
+                text-decoration: none;
+            }
+           
+        }
+    }
+}
