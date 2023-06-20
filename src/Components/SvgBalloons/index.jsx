@@ -1,22 +1,8 @@
-import anime from "animejs";
 import React from "react";
-import { useEffect } from "react";
 import "./index.scss";
 
 const index = () => {
-  useEffect(() => {
-    anime({
-      targets: ".balloons",
-      strokeDashoffset: [anime.setDashoffset, 0],
-      easing: "easeInOutSine",
-      duration: 1000,
-      delay: function (el, i) {
-        return i * 250;
-      },
-      direction:"alternate",
-      loop: true
-    });
-  }, []);
+
   return (
    
   <>

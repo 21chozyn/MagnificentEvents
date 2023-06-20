@@ -1,11 +1,13 @@
 :root {
   --backgroundColor: #0f0200;
+  --backgroundColor1: #1F1614;
   --textColor1: #594c49;
   --btnColor1: #fe4d13;
 }
 body {
   color: white;
   background-color: var(--backgroundColor);
+  margin: 0;
 }
 h1 {
   font-size: 4rem;
@@ -38,4 +40,11 @@ h2 {
   line-height: 70px;
   font-size: 25px;
   border-radius: 50px;
+}
+.textBtn{
+  cursor: pointer;
+  font-size: 2rem;
+}
+.textBtn:hover{
+  color: rgb(152, 152, 152);
 }

@@ -1,0 +1,65 @@
+.content1 {
+  padding: 100px;
+  h1 {
+    text-align: center;
+  }
+  .weddingimg {
+    width: 100%;
+  }
+  > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    div {
+      padding: 0 20px;
+    }
+  }
+}
+.content2 {
+  padding: 100px;
+  background-color: var(--backgroundColor1);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  h1 {
+    padding-top: 0;
+    text-align: left;
+  }
+  p {
+    position: relative;
+    top: 40%;
+    text-align: right;
+  }
+  ul {
+    list-style-type: none;
+
+    margin: 0;
+    padding: 0;
+    li{
+        margin: 20px 0;
+    }
+  }
+  > div{
+    position: relative;
+    width: 100%;
+    right: 0;
+    padding-left: 50px;
+    img{
+        object-fit:cover;
+        position: absolute;
+        width: 80%;
+        height: 500px;
+        
+    }
+  }
+}
+.content3{
+  margin-top: 150px;
+  padding: 0;
+  ul{
+    list-style-type: none;
+    li{
+      
+    }
+  }
+}

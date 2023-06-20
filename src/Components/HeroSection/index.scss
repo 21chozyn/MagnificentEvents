@@ -1,38 +1,67 @@
 .hero-section {
   display: block;
   width: 100%;
-  .balloons{
+  padding-top: 60px;
+  .balloons {
     position: absolute;
     top: 90px;
     right: 0;
     width: 300px;
-    height: 300px
+    height: 300px;
   }
-  .div1 {
+  .section1 {
     display: grid;
     grid-template-columns: 1fr 2fr;
     position: relative;
-    height: 500px;
     img {
       max-width: 300px;
       height: 100%;
       margin: 0;
       padding: 0;
     }
-    > div{
-        display: inline-block;
-        position: relative;
-        left: 0;
-        max-width: 65%;
-        height: 100%;
-       
-        h1{
-            max-width: 500px;
-        }
-        div{
-            position: absolute;
-            bottom: 5px;
-        }
+    > div {
+      display: inline-block;
+      position: relative;
+      left: 0;
+      max-width: 65%;
+      height: 100%;
+
+      h1 {
+        max-width: 500px;
+        line-height: 64px;
+      }
+     
+     
+    }
+  }
+  .section2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: var(--backgroundColor1);
+    margin-top: 50px;
+    padding-bottom: 50px;
+    div {
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      h2 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    div::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      left: 0;
+      top: 35%;
+      width: 1px;
+      height: 50%;
+      margin: 0 auto;
+      border-left: 1px solid var(--textColor1);
+    }
+    div:first-child::after{
+      border: none;
     }
   }
 }
