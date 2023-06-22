@@ -10,13 +10,41 @@ import cake1 from "../../Images/cake1.jpg";
 import other1 from "../../Images/other1.jpg";
 import birthday1 from "../../Images/birthday1.jpg";
 import graduation1 from "../../Images/graduation1.jpg";
+import anime from "animejs";
+
 const index = () => {
-  const [curPic, setCurPic] = useState(event1);
-  const imageRef = useRef();
-  const handleChangePic =(img)=>{
-    
-    setCurPic(img)
-  }
+  const [curPic1, setCurPic1] = useState(event1);
+  const [curpic2, setCurPic2] = useState(wedding1);
+  const [isSlided, setIsSlided] = useState(false);
+  const handleHoverIn = (img) => {
+    setIsSlided((prev) => !prev);
+    if (isSlided) {
+      setCurPic2(img);
+      anime({
+        targets: ".img1",
+        translateX: 400,
+        duration: 250,
+      });
+      anime({
+        targets: ".img2",
+        translateX: 0,
+        duration: 250,
+      });
+    } else {
+      setCurPic1(img);
+      anime({
+        targets: ".img1",
+        translateX: 0,
+        duration: 250,
+      });
+      anime({
+        targets: ".img2",
+        translateX: -400,
+        duration: 250,
+      });
+    }
+  };
+
   return (
     <div className="content-section">
       <section className="content1">
@@ -48,21 +76,42 @@ const index = () => {
         </p>
         <ul>
           <li>
-            <div onMouseEnter={()=>handleChangePic(wedding1)} className="textBtn">Wedding</div>
+            <div
+              onMouseEnter={() => handleHoverIn(wedding1)}
+              className="textBtn"
+            >
+              Wedding
+            </div>
           </li>
           <li>
-            <div onMouseEnter={()=>handleChangePic(birthday1)} className="textBtn">Birthday Party</div>
+            <div
+              onMouseEnter={() => handleHoverIn(birthday1)}
+              className="textBtn"
+            >
+              Birthday Party
+            </div>
           </li>
           <li>
-            <div onMouseEnter={()=>handleChangePic(graduation1)} className="textBtn">Graduation Party</div>
+            <div
+              onMouseEnter={() => handleHoverIn(graduation1)}
+              className="textBtn"
+            >
+              Graduation Party
+            </div>
           </li>
           <li>
-            <div onMouseEnter={()=>handleChangePic(wedding1)} className="textBtn">Wedding</div>
+            <div
+              onMouseEnter={() => handleHoverIn(wedding1)}
+              className="textBtn"
+            >
+              Wedding
+            </div>
           </li>
         </ul>
-          <figure>
-            <img ref={imageRef} src={curPic}></img>
-          </figure>
+        <figure>
+          <img className="img1" src={curPic1}></img>
+          <img className="img2" src={curpic2}></img>
+        </figure>
       </section>
       <section className="content3">
         <h2>Things to get along with Event Decoration</h2>

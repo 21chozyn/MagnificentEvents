@@ -44,12 +44,19 @@
   figure {
     width: 400px;
     height: 600px;
-   
+   position: relative;
     img {
-      
+      position: absolute;
       object-fit: cover;
       width: 400px;
       height: 100%;
+      z-index: 2;
+    }
+    img:first-child{
+      z-index: 1;
+    }
+    .img2{
+      transform: translateX(-400px);
     }
   }
 }
