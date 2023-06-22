@@ -4,10 +4,12 @@ import "./index.scss";
 //Component imports
 import SvgBalloons from "../SvgBalloons";
 import SvgDecor from "../SvgDecor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 // resource imports
 import heroImg1 from "../../Images/herosection1.jpg";
 import balloonsImg from "../../Images/Balloons.jpg";
-
+// import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 const index = () => {
   return (
     <>
@@ -16,7 +18,9 @@ const index = () => {
           <SvgBalloons />
         </div>
         <section className="section1">
-          <img src={heroImg1} />
+          <figure>
+            <img src={heroImg1} />
+          </figure>
           <div>
             <h1>
               Events
@@ -39,7 +43,9 @@ const index = () => {
               unforgettable event, look no further! Contact us today to learn
               more about our services.
             </p>
-            <div className="btn2">Get in touch</div>
+            <button className="btn2">
+              <span>Get in touch</span>
+            </button>
           </div>
         </section>
         <section className="section2">

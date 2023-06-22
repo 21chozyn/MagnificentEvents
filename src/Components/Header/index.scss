@@ -13,8 +13,11 @@
             a{
                 display: inline-block;
                 width: 60px;
-                color: var(--textColor1);
+                color: rgb(156, 153, 153);
                 text-decoration: none;
+            }
+            a:hover{
+                color: white;
             }
            
         }

@@ -19,7 +19,7 @@ const index = () => {
           </li>
         </ul>
       </div>
-      <div className="btn1">Contact us</div>
+      <button className="btn1">Contact us</button>
     </div>
   );
 };

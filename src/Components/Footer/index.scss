@@ -1,0 +1,87 @@
+.footer {
+  background-color: var(--backgroundColor1);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+  }
+  .div2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid white;
+    > div {
+      padding-left: 20%;
+      h2 {
+        text-align: start;
+      }
+      .email,
+      span {
+        font-size: 1.25rem;
+        text-decoration: underline;
+      }
+      .signupTxt {
+        font-size: 0.7rem;
+        color: rgb(170, 170, 170);
+      }
+      input {
+        width: 80%;
+        background-color: var(--backgroundColor1);
+        border: none;
+        border-bottom: 1px solid rgb(123, 123, 123);
+      }
+      input::placeholder {
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+    }
+  }
+  .div3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    ul {
+      list-style-type: none;
+      display: inline;
+      //   margin: 0;
+      //   padding: 0;
+      li {
+        display: inline;
+        padding: 5px;
+        line-height: 80px;
+
+        svg {
+          color: wheat;
+        }
+      }
+    }
+    h2{
+      line-height: 80px;
+    }
+    span{
+      font-size: 0.8rem;
+      text-align: center;
+      line-height: 100px;
+      color: rgb(157, 157, 157);
+    }
+  }
+  .copyright{
+    position: relative;
+    font-size: 0.8rem;
+    text-align: center;
+    color: rgb(157, 157, 157);
+    line-height: 50px;
+  }
+  .copyright::before{
+    content: "";
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    border-top: 1px solid rgb(155, 153, 153);
+    height: 1px;
+
+  }
+}

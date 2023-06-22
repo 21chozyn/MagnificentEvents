@@ -13,12 +13,16 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     position: relative;
-    img {
+    figure {
       max-width: 300px;
       height: 100%;
-      margin: 0;
-      padding: 0;
+     
+      img {
+        max-width: 300px;
+        height: 100%;
+      }
     }
+
     > div {
       display: inline-block;
       position: relative;
@@ -30,8 +34,30 @@
         max-width: 500px;
         line-height: 64px;
       }
-     
-     
+      .btn2 {
+        span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+          &::after {
+            content: "\00bb";
+            font-size: 2rem;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+          }
+        }
+        &:hover span {
+          padding-right: 25px;
+        }
+        &:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
+      }
     }
   }
   .section2 {
@@ -48,7 +74,7 @@
         font-size: 2.5rem;
       }
     }
-    
+
     div::after {
       content: "";
       position: absolute;
@@ -60,7 +86,7 @@
       margin: 0 auto;
       border-left: 1px solid var(--textColor1);
     }
-    div:first-child::after{
+    div:first-child::after {
       border: none;
     }
   }
