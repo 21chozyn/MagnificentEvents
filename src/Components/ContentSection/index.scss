@@ -36,15 +36,15 @@
 
     margin: 0;
     padding: 0;
-    li{
-        margin: 1.2rem 0;
-        padding: 1.2rem 0;
+    li {
+      margin: 1.2rem 0;
+      padding: 1.2rem 0;
     }
   }
   figure {
     width: 400px;
     height: 600px;
-   position: relative;
+    position: relative;
     img {
       position: absolute;
       object-fit: cover;
@@ -52,47 +52,87 @@
       height: 100%;
       z-index: 2;
     }
-    img:first-child{
+    img:first-child {
       z-index: 1;
     }
-    .img2{
+    .img2 {
       transform: translateX(-400px);
     }
   }
 }
-.content3{
+.content3 {
   margin-top: 200px;
   padding: 0 0 100px 0;
-  ul{
+  .thingsList {
+    // transform: translateX();
+  }
+  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    li{
+    li {
+      opacity: 0;
       height: 150px;
       border-bottom: 1px solid rgb(186, 186, 186);
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      span{
+      span {
         line-height: 150px;
         font-size: 2rem;
         text-align: center;
       }
-      img{
+      img {
         height: 150px;
         width: 150px;
         object-fit: cover;
       }
     }
-    li:nth-child(odd)::before{
-        content: "";
-        display: inline-block;
-        position: relative
+    // li:nth-child(odd){
+    //   transform: translateX(-200vh);
+    // }
+    // li:nth-child(even){
+    //   transform: translateX(200vh);
+    // }
+    li:nth-child(odd)::before {
+      content: "";
+      display: inline-block;
+      position: relative;
     }
-    li:nth-child(odd){
-      img{
+    li:nth-child(odd) {
+      img {
         justify-self: end;
       }
     }
-    
+  }
+}
+@media (max-width: 800px) {
+  .content-section {
+    .content1 {
+      padding: 50px;
+    }
+    .content2{
+      padding: 50px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .content-section {
+    .content1 {
+      padding: 10px;
+      h1 {
+        font-size: 30px;
+      }
+      DIV{
+        padding: 0px 5px;
+      div {
+        font-size: 1rem;
+        h2 {
+          font-size: 1.2rem;
+        }
+      }}
+    }
+    .content2{
+      padding: 10px;
+    }
   }
 }

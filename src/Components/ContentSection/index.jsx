@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.scss";
-
+import useAnimateOnIntersection from "../../Hooks/useAnimateOnIntersection";
 //image imports
 import wedding1 from "../../Images/wedding1.jpg";
 import event1 from "../../Images/event1.jpg";
@@ -13,37 +13,54 @@ import graduation1 from "../../Images/graduation1.jpg";
 import anime from "animejs";
 
 const index = () => {
+  //for image switch
   const [curPic1, setCurPic1] = useState(event1);
   const [curpic2, setCurPic2] = useState(wedding1);
   const [isSlided, setIsSlided] = useState(false);
-  const handleHoverIn = (img) => {
+  const handleClickToDo = (img) => {
+    // this function handles the logic of switching and sliding the images
     setIsSlided((prev) => !prev);
     if (isSlided) {
       setCurPic2(img);
       anime({
         targets: ".img1",
+        easing: "linear",
+
         translateX: 400,
-        duration: 250,
+        duration: 1000,
       });
       anime({
         targets: ".img2",
+        easing: "linear",
         translateX: 0,
-        duration: 250,
+        duration: 1000,
       });
     } else {
       setCurPic1(img);
       anime({
         targets: ".img1",
+        easing: "linear",
         translateX: 0,
-        duration: 250,
+        duration: 1000,
       });
       anime({
         targets: ".img2",
+        easing: "linear",
         translateX: -400,
-        duration: 250,
+        duration: 1000,
       });
     }
   };
+
+  const cateringRef = useRef(null);
+  const invitationRef = useRef(null);
+  const cakesRef = useRef(null);
+  const hireEquipmentRef = useRef(null);
+
+  useAnimateOnIntersection(cateringRef, false);
+  useAnimateOnIntersection(invitationRef, true);
+  useAnimateOnIntersection(cakesRef, false);
+  useAnimateOnIntersection(hireEquipmentRef, true);
 
   return (
     <div className="content-section">
@@ -76,34 +93,25 @@ const index = () => {
         </p>
         <ul>
           <li>
-            <div
-              onMouseEnter={() => handleHoverIn(wedding1)}
-              className="textBtn"
-            >
+            <div onClick={() => handleClickToDo(wedding1)} className="textBtn">
               Wedding
             </div>
           </li>
           <li>
-            <div
-              onMouseEnter={() => handleHoverIn(birthday1)}
-              className="textBtn"
-            >
+            <div onClick={() => handleClickToDo(birthday1)} className="textBtn">
               Birthday Party
             </div>
           </li>
           <li>
             <div
-              onMouseEnter={() => handleHoverIn(graduation1)}
+              onClick={() => handleClickToDo(graduation1)}
               className="textBtn"
             >
               Graduation Party
             </div>
           </li>
           <li>
-            <div
-              onMouseEnter={() => handleHoverIn(wedding1)}
-              className="textBtn"
-            >
+            <div onClick={() => handleClickToDo(wedding1)} className="textBtn">
               Wedding
             </div>
           </li>
@@ -116,11 +124,11 @@ const index = () => {
       <section className="content3">
         <h2>Things to get along with Event Decoration</h2>
         <ul className="thingsList">
-          <li>
+          <li className="catering" ref={cateringRef}>
             <span>Catering</span>
             <img src={catering1}></img>
           </li>
-          <li>
+          <li className="invitation" ref={invitationRef}>
             <img
               src={invitation1}
               alt="This is a picture of an invitation card"
@@ -128,11 +136,11 @@ const index = () => {
 
             <span>Invitation cards</span>
           </li>
-          <li>
+          <li className="cake" ref={cakesRef}>
             <span>Cakes</span>
             <img src={cake1}></img>
           </li>
-          <li>
+          <li className="higherEquipment" ref={hireEquipmentRef}>
             <img src={other1}></img>
             <span>Hire equipment</span>
           </li>

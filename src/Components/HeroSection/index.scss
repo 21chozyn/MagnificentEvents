@@ -16,7 +16,8 @@
     figure {
       max-width: 300px;
       height: 100%;
-     
+      max-height: 80vh;
+
       img {
         max-width: 300px;
         height: 100%;
@@ -29,10 +30,14 @@
       left: 0;
       max-width: 65%;
       height: 100%;
-
+      p {
+        max-height: 30vh;
+        overflow-y: auto;
+      }
       h1 {
         max-width: 500px;
         line-height: 64px;
+        margin: 1rem 0;
       }
       .btn2 {
         span {
@@ -88,6 +93,47 @@
     }
     div:first-child::after {
       border: none;
+    }
+  }
+}
+@media (max-width: 900px) {
+  .hero-section {
+    .balloons {
+      opacity: 0.7;
+    }
+    .section1 {
+      grid-template-columns: 3fr 5fr;
+      > div {
+        max-width: 45vw;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 700px) {
+  h1 {
+    svg {
+      width: 300px;
+    }
+  }
+}
+@media (max-width: 545px) {
+  .hero-section {
+    .section1 {
+      grid-template-columns: max-content;
+      > div {
+        max-width: 90vw;
+        padding-left: 20px;
+        h1 {
+          svg {
+            width: 350px;
+          }
+        }
+      }
+      figure {
+        display: none;
+      }
+      
     }
   }
 }
