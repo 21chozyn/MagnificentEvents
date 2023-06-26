@@ -91,6 +91,7 @@ figure img {
 }
 html,body{
   overflow-x: hidden;
+  transition: all 0.3s;
 }
 @media (max-width:600px) {
   html{
