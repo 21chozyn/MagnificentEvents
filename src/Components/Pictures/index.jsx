@@ -1,7 +1,7 @@
 //this component is responsible for handling the pictures in the portfolio page
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-
+import { CgCloseO } from "react-icons/cg";
 import { createClient } from "pexels";
 const defaultPhoto = [
   {
@@ -34,56 +34,75 @@ const defaultPhoto = [
     alt: "Brown Rocks During Golden Hour",
   },
 ];
-const index = () => {
+
+const index = ({ searchData }) => {
   const client = createClient(
     "NCZbqi6QUEkbIPyg9uIcwOBhfeu58q33acmxCDalBnC8lfMeQ3NCpex6"
   );
   const [photos, setPhotos] = useState(defaultPhoto);
+  const [showModal, setShowModal] = useState(false);
+  const [modalPicInfo, setModalPicInfo] = useState({
+    src: "https://images.pexels.com/photos/17325195/pexels-photo-17325195.jpeg?auto=compress&cs=tinysrgb&h=350",
+    alt: "dog",
+  });
+  const photoLayout = (photos, columns, colNum) => {
+    //this function is responsible for filtering photos which go to the first column etc
+
+    return photos
+      .filter((photo, index) => {
+        return index % columns === colNum - 1;
+      })
+      .map((photo, index) => {
+        return (
+          <img
+            onClick={handleShowPic}
+            // style={{backgroundColor:photo.avg_color}}
+            src={photo.src.small}
+            key={index}
+            alt={photo.alt}
+            srcSet={photo.src.original} // this is the pic url used when img is clicked
+          ></img>
+        );
+      });
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  const handleShowPic = (e) => {
+    setModalPicInfo({ src: e.target.srcset, alt: e.target.alt }); //to update the modal src and alt
+    setShowModal(true);
+  };
+
   useEffect(() => {
     //this useeffect loads the default images once the page loads.
     client.photos
-      .curated({ per_page: 20 })
+      .curated({ per_page: 5 })
       .then((photos) => setPhotos(photos.photos));
   }, []);
+
   useEffect(() => {
-    console.log(photos.map((photo) => {return photo.url.medium}));
-  }, [photos]);
+    //this useeffect loads the searched images as the searchParams change
+    client.photos
+      .search({ query:searchData.text, per_page: 10 })
+      .then((photos) => setPhotos(photos.photos));
+  }, [searchData]);
   return (
-    <div className="pictures-container">
-      <div className="col1">
-        {photos
-          .filter((photo, index) => {
-            return index % 3 === 0;
-          })
-          .map((photo, index) => {
-            return (
-              <img src={photo.src.medium} key={index} alt={photo.alt}></img>
-            );
-          })}
+    <>
+      <h1>Magnificent Events Pictures</h1>
+      <div className="pictures-container">
+        <div className="col1">{photoLayout(photos, 3, 1)}</div>
+        <div className="col2">{photoLayout(photos, 3, 2)}</div>
+        <div className="col3">{photoLayout(photos, 3, 3)}</div>
       </div>
-      <div className="col2">
-      {photos
-          .filter((photo, index) => {
-            return index % 3 === 1;
-          })
-          .map((photo, index) => {
-            return (
-              <img src={photo.src.medium} key={index} alt={photo.alt}></img>
-            );
-          })}
-      </div>
-      <div className="col3">
-      {photos
-          .filter((photo, index) => {
-            return index % 3 === 2;
-          })
-          .map((photo, index) => {
-            return (
-              <img src={photo.src.medium} key={index} alt={photo.alt}></img>
-            );
-          })}
-      </div>
-    </div>
+      {showModal && (
+        <div id="image-modal-container">
+          <CgCloseO onClick={handleCloseModal} />
+          <figure className="img-container">
+            <img src={modalPicInfo.src} alt={modalPicInfo.alt} />
+          </figure>
+        </div>
+      )}
+    </>
   );
 };
 
