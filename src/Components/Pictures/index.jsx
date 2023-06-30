@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { CgCloseO } from "react-icons/cg";
 import { createClient } from "pexels";
+import anime from "animejs";
+import useLoadImgOnIntersection from "../../Hooks/useLoadImgOnIntersection";
 const defaultPhoto = [
   {
     id: 2880507,
@@ -45,59 +47,110 @@ const index = ({ searchData }) => {
     src: "https://images.pexels.com/photos/17325195/pexels-photo-17325195.jpeg?auto=compress&cs=tinysrgb&h=350",
     alt: "dog",
   });
-  const photoLayout = (photos, columns, colNum) => {
+
+  const [pictureColCount, setPictureColCount] = useState(
+    window.innerWidth < 600 ? 2 : window.innerWidth < 1000 ? 3 : 4
+  );
+
+  const photoLayout = (photos, colNum) => {
     //this function is responsible for filtering photos which go to the first column etc
 
     return photos
       .filter((photo, index) => {
-        return index % columns === colNum - 1;
+        return index % pictureColCount === colNum - 1;
       })
       .map((photo, index) => {
         return (
-          <img
-            onClick={handleShowPic}
-            // style={{backgroundColor:photo.avg_color}}
-            src={photo.src.small}
-            key={index}
-            alt={photo.alt}
-            srcSet={photo.src.original} // this is the pic url used when img is clicked
-          ></img>
+          <div key={index}>
+            <img
+              onClick={() => {
+                handleShowPic(photo.src.original, photo.alt);
+              }}
+              // style={{backgroundColor:photo.avg_color}}
+              src={index <= 3 ? photo.src.medium : ""} // this makes the first 9 pictures load on start
+              // data-src={photo.src.small} //this custom attribute is used for lazy loading
+              id={photo.src.medium}
+              alt={photo.alt}
+              // source={photo.src.original} // this is the pic url used when img is clicked
+              className={index > 3 ? "lazy" : ""}
+            ></img>
+            {photo.alt !== "" && ( //to only show when alt text is available
+              <div
+                className="overlay"
+                style={{ backgroundColor: photo.avg_color }}
+              >
+                <div className="text">{photo.alt}</div>
+              </div>
+            )}
+          </div>
         );
       });
   };
+  useLoadImgOnIntersection(photoLayout); //this hook loads images as the users scrolls
+
   const handleCloseModal = () => {
-    setShowModal(false);
+    document.documentElement.style.overflow = "scroll"; //to make page scrollable
+    anime({
+      targets: "#img-modal-figure",
+      opacity: 0,
+      easing: "easeInQuad",
+      duration: 500,
+      complete: function () {
+        setShowModal(false);
+      },
+    });
   };
-  const handleShowPic = (e) => {
-    setModalPicInfo({ src: e.target.srcset, alt: e.target.alt }); //to update the modal src and alt
+  const handleShowPic = (src, alt) => {
+    document.documentElement.style.overflow = "hidden"; //to make page unscrollable
+
+    setModalPicInfo({ src: src, alt: alt }); //to update the modal src and alt
     setShowModal(true);
   };
 
   useEffect(() => {
     //this useeffect loads the default images once the page loads.
     client.photos
-      .curated({ per_page: 5 })
+      .curated({ per_page: 80 })
       .then((photos) => setPhotos(photos.photos));
   }, []);
 
   useEffect(() => {
     //this useeffect loads the searched images as the searchParams change
     client.photos
-      .search({ query:searchData.text, per_page: 10 })
+      .search({ query: searchData.text, per_page: 80 })
       .then((photos) => setPhotos(photos.photos));
   }, [searchData]);
+  useEffect(() => {
+    //this useeffect is responsible for changing num of picture columns
+    function handleResize() {
+      setPictureColCount(
+        window.innerWidth < 600 ? 2 : window.innerWidth < 1000 ? 3 : 4
+      );
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  useEffect(() => {
+    console.log(pictureColCount);
+  }, [pictureColCount]);
   return (
     <>
       <h1>Magnificent Events Pictures</h1>
       <div className="pictures-container">
-        <div className="col1">{photoLayout(photos, 3, 1)}</div>
-        <div className="col2">{photoLayout(photos, 3, 2)}</div>
-        <div className="col3">{photoLayout(photos, 3, 3)}</div>
+        <div className="col1">{photoLayout(photos, 1)}</div>
+        <div className="col2">{photoLayout(photos, 2)}</div>
+        {pictureColCount >= 3 && (
+          <div className="col3">{photoLayout(photos, 3)}</div>
+        )}
+        {pictureColCount === 4 && (
+          <div className="col4">{photoLayout(photos, 4)}</div>
+        )}
       </div>
       {showModal && (
         <div id="image-modal-container">
           <CgCloseO onClick={handleCloseModal} />
-          <figure className="img-container">
+          <figure id="img-modal-figure">
             <img src={modalPicInfo.src} alt={modalPicInfo.alt} />
           </figure>
         </div>
@@ -107,3 +160,5 @@ const index = ({ searchData }) => {
 };
 
 export default index;
+const elements = document.querySelectorAll(".lazy");
+elements.forEach((element) => console.log(element));
