@@ -5,6 +5,7 @@ import { CgCloseO } from "react-icons/cg";
 import { createClient } from "pexels";
 import anime from "animejs";
 import useLoadImgOnIntersection from "../../Hooks/useLoadImgOnIntersection";
+import ProgressiveImg from "../ProgressiveImg";
 const defaultPhoto = [
   {
     id: 2880507,
@@ -39,7 +40,7 @@ const defaultPhoto = [
 
 const index = ({ searchData }) => {
   const client = createClient(
-    "NCZbqi6QUEkbIPyg9uIcwOBhfeu58q33acmxCDalBnC8lfMeQ3NCpex6"
+    "NCZbqi6QUEkbIPyg9uIcwOBhfeu58q33acmxCDalBnC8lfMeQ3NCpex6"//key for pexels api
   );
   const [photos, setPhotos] = useState(defaultPhoto);
   const [showModal, setShowModal] = useState(false);
@@ -49,6 +50,7 @@ const index = ({ searchData }) => {
   });
 
   const [pictureColCount, setPictureColCount] = useState(
+    //this usestate stores number of columns to show pictures depending on device width
     window.innerWidth < 600 ? 2 : window.innerWidth < 1000 ? 3 : 4
   );
 
@@ -62,18 +64,16 @@ const index = ({ searchData }) => {
       .map((photo, index) => {
         return (
           <div key={index}>
-            <img
-              onClick={() => {
-                handleShowPic(photo.src.original, photo.alt);
+            
+            <ProgressiveImg onClick={() => {
+                handleShowPic(photo.src.large2x, photo.alt,photo.src.small,photo.height,photo.width,);
               }}
-              // style={{backgroundColor:photo.avg_color}}
               src={index <= 3 ? photo.src.medium : ""} // this makes the first 9 pictures load on start
-              // data-src={photo.src.small} //this custom attribute is used for lazy loading
               id={photo.src.medium}
               alt={photo.alt}
-              // source={photo.src.original} // this is the pic url used when img is clicked
               className={index > 3 ? "lazy" : ""}
-            ></img>
+              placeholderSrc={photo.src.small}
+              />
             {photo.alt !== "" && ( //to only show when alt text is available
               <div
                 className="overlay"
@@ -100,12 +100,15 @@ const index = ({ searchData }) => {
       },
     });
   };
-  const handleShowPic = (src, alt) => {
+  const handleShowPic = (src, alt,tinySrc,height,width) => {
     document.documentElement.style.overflow = "hidden"; //to make page unscrollable
 
-    setModalPicInfo({ src: src, alt: alt }); //to update the modal src and alt
+    setModalPicInfo({ src: src, alt: alt ,tinySrc:tinySrc,height:height,width:width}); //to update the modal src and alt
     setShowModal(true);
   };
+  const handleLoad=(e)=>{
+    e.target.addEventListener("load",()=>{console.log("fully loaded")})
+  }
 
   useEffect(() => {
     //this useeffect loads the default images once the page loads.
@@ -131,13 +134,11 @@ const index = ({ searchData }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  useEffect(() => {
-    console.log(pictureColCount);
-  }, [pictureColCount]);
+
   return (
     <>
-      <h1>Magnificent Events Pictures</h1>
-      <div className="pictures-container">
+      <h1 id="pictures-container">Magnificent Events Pictures</h1>
+      <div className="pictures-container" >
         <div className="col1">{photoLayout(photos, 1)}</div>
         <div className="col2">{photoLayout(photos, 2)}</div>
         {pictureColCount >= 3 && (
@@ -151,7 +152,8 @@ const index = ({ searchData }) => {
         <div id="image-modal-container">
           <CgCloseO onClick={handleCloseModal} />
           <figure id="img-modal-figure">
-            <img src={modalPicInfo.src} alt={modalPicInfo.alt} />
+           {/* <img src={modalPicInfo.src} alt={modalPicInfo.alt} onLoad={console.log("loaded") }/> */}
+        <ProgressiveImg  placeholderSrc={modalPicInfo.tinySrc} src={modalPicInfo.src} alt={modalPicInfo.alt} height={modalPicInfo.height} width={modalPicInfo.width}/>
           </figure>
         </div>
       )}
@@ -160,5 +162,4 @@ const index = ({ searchData }) => {
 };
 
 export default index;
-const elements = document.querySelectorAll(".lazy");
-elements.forEach((element) => console.log(element));
+

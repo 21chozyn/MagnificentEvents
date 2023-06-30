@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Pictures from "../../Pictures";
 
 import "./index.scss";
@@ -12,6 +12,9 @@ const index = () => {
   const [searchData, setSearchData] = useState({ text: "", isPicture: true });
   const handleSearch = () => {
     setSearchData({ text: searchText, isPicture: isSearchPicture });
+    document.querySelector("#pictures-container").scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
