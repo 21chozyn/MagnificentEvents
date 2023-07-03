@@ -1,0 +1,32 @@
+.choice-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--backgroundColor1);
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(168, 168, 168);
+
+    .icon-container{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-9px);
+        background-color: var(--backgroundColor);
+        border-radius: 0 0 20px 20px;
+        border: 1px solid rgb(168, 168, 168);
+        border-top: none;
+        height: 25px;
+        width: 50px;
+        svg{
+            transform: translateY(-50%);
+            align-self: center;
+            font-size: 35px;
+        }
+    }
+    h2{
+        text-align: left;
+        margin-bottom: 5px;
+    }
+}

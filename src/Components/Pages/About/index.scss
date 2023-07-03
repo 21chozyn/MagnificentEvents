@@ -1,0 +1,37 @@
+.about-section {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  padding: 10px 4rem;
+  > h1 {
+    margin-bottom: 0.5rem;
+  }
+  > p {
+    width: 40%;
+    text-align: center;
+  }
+}
+.section1 {
+  .about-us {
+    display: flex;
+    flex-direction: row;
+    & > * {
+      margin: 5%;
+      flex-basis: 40%;
+    }
+    figure {
+      img {
+        width: 100%;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+.section2 {
+  .choices-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
