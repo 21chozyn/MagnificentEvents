@@ -10,7 +10,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import heroImg1 from "../../Images/herosection1.jpg";
 import balloonsImg from "../../Images/Balloons.jpg";
 // import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+export const handleOpenContactForm = () => {
+  document.getElementById("contact-form").style.display = "flex";
+  document.documentElement.style.overflow = "hidden"; //to make page unscrollable
+
+};
+
 const index = () => {
+  
   return (
     <>
       <div className="hero-section">
@@ -43,7 +50,7 @@ const index = () => {
               unforgettable event, look no further! Contact us today to learn
               more about our services.
             </p>
-            <button className="btn2">
+            <button className="btn2" onClick={handleOpenContactForm}>
               <span>Get in touch</span>
             </button>
           </div>

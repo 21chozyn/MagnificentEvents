@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./index.scss";
+
+import { handleOpenContactForm } from "../HeroSection";
 const index = () => {
   const location = useLocation();
   return (
@@ -35,7 +37,7 @@ const index = () => {
           </li>
         </ul>
       </div>
-      <button className="btn1">Contact us</button>
+      <button className="btn1" onClick={handleOpenContactForm}>Contact us</button>
     </div>
   );
 };

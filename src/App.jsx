@@ -6,12 +6,14 @@ import Footer from "./Components/Footer";
 import Portfolio from "./Components/Pages/Portfolio";
 import About from "./Components/Pages/About";
 import Background from "./Components/Background";
+import LoadingComponent from "./Components/LoadingComponent";
 
 function App() {
   return (
     <Router>
       <Header />
-      <Background/>
+      <Background />
+      <LoadingComponent />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"

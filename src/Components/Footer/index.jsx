@@ -5,12 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
+import ContactForm from "../ContactForm";
+import { handleOpenContactForm } from "../HeroSection";
 
 const index = () => {
   return (
     <section className="footer">
       <h1>Have a project in mind?</h1>
-      <div className="btn2">
+      <div className="btn2" onClick={handleOpenContactForm}>
         Get in touch
         <BsBoxArrowInUpRight />
       </div>
@@ -53,7 +55,10 @@ const index = () => {
           Privacy Policy | Terms and conditions
         </span>
       </div>
-      <span className="copyright">&copy; Copyright 2023. All right reserved</span>
+      <span className="copyright">
+        &copy; Copyright 2023. All right reserved
+      </span>
+      <ContactForm />
     </section>
   );
 };

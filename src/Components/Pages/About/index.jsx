@@ -4,6 +4,7 @@ import colleagues from "../../../Images/colleagues.jpg";
 import ChoiceCard from "../../ChoiceCard";
 
 import { FcApproval, FcAssistant, FcIdea,FcCallback } from "react-icons/fc";
+import { handleOpenContactForm } from "../../HeroSection";
 const index = () => {
   return (
     <>
@@ -34,7 +35,7 @@ const index = () => {
               during the Renaissance. The first line of Lorem Ipsum, "Lorem
               ipsum dolor sit amet..", comes from a line in section 1.10.32.
             </p>
-            <div className="btn2">Contact us</div>
+            <div className="btn2" onClick={handleOpenContactForm}>Contact us</div>
           </div>
         </div>
       </section>
