@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./index.scss";
-import useAnimateOnIntersection from "../../Hooks/useAnimateOnIntersection";
+import useAnimateSlideOnIntersection from "../../Hooks/useAnimateOnIntersection";
 //image imports
 import wedding1 from "../../Images/wedding1.jpg";
 import event1 from "../../Images/event1.jpg";
@@ -11,7 +11,14 @@ import other1 from "../../Images/other1.jpg";
 import birthday1 from "../../Images/birthday1.jpg";
 import graduation1 from "../../Images/graduation1.jpg";
 import anime from "animejs";
+import useAnimateIntoView from "../../Hooks/useAnimateIntoView";
 
+import { GiLovers } from "react-icons/gi";
+import {
+  HiOutlineCake,
+  HiOutlineAcademicCap,
+  HiDotsHorizontal,
+} from "react-icons/hi";
 const index = () => {
   //for image switch
   const [curPic1, setCurPic1] = useState(event1);
@@ -56,15 +63,17 @@ const index = () => {
   const invitationRef = useRef(null);
   const cakesRef = useRef(null);
   const hireEquipmentRef = useRef(null);
+  const content1Ref = useRef(null);
 
-  useAnimateOnIntersection(cateringRef, false);
-  useAnimateOnIntersection(invitationRef, true);
-  useAnimateOnIntersection(cakesRef, false);
-  useAnimateOnIntersection(hireEquipmentRef, true);
+  useAnimateSlideOnIntersection(cateringRef, false);
+  useAnimateSlideOnIntersection(invitationRef, true);
+  useAnimateSlideOnIntersection(cakesRef, false);
+  useAnimateSlideOnIntersection(hireEquipmentRef, true);
+  useAnimateIntoView(content1Ref);
 
   return (
     <div className="content-section">
-      <section className="content1">
+      <section className="content1" ref={content1Ref}>
         <h1>Breathtaking designs to look forward to.</h1>
         <figure>
           <img className="weddingimg" src={wedding1} alt="" />
@@ -94,12 +103,14 @@ const index = () => {
         <ul>
           <li>
             <div onClick={() => handleClickToDo(wedding1)} className="textBtn">
-              Wedding
+              <p>Wedding</p>
+              <GiLovers className="lovers-icon" />
             </div>
           </li>
           <li>
             <div onClick={() => handleClickToDo(birthday1)} className="textBtn">
-              Birthday Party
+              <p> Birthday Party</p>
+              <HiOutlineCake className="cake-icon" />
             </div>
           </li>
           <li>
@@ -107,12 +118,14 @@ const index = () => {
               onClick={() => handleClickToDo(graduation1)}
               className="textBtn"
             >
-              Graduation Party
+              <p>Graduation Party </p>
+              <HiOutlineAcademicCap className="graduation-icon" />
             </div>
           </li>
           <li>
-            <div onClick={() => handleClickToDo(wedding1)} className="textBtn">
-              Wedding
+            <div onClick={() => handleClickToDo(event1)} className="textBtn">
+              <p>Other</p>
+              <HiDotsHorizontal className="other-icon" />
             </div>
           </li>
         </ul>

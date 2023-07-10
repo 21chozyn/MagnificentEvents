@@ -1,10 +1,12 @@
 .content1 {
-  padding: 100px;
+  padding: 3rem;
   h1 {
     text-align: center;
   }
   .weddingimg {
     width: 100%;
+    height: 65vh;
+    object-fit: cover;
   }
   > div {
     display: grid;
@@ -39,6 +41,36 @@
     li {
       margin: 1.2rem 0;
       padding: 1.2rem 0;
+      .textBtn {
+       
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        p {
+          padding: 0;
+          text-align: center;
+          margin: 0;
+        }
+        svg {
+          width: 100%;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .lovers-icon {
+          color: red;
+        }
+        .cake-icon {
+          color: brown// #f9f9e0;
+        }
+        .graduation-icon {
+          color: purple;
+        }
+        .other-icon {
+          color: white;
+        }
+      }
     }
   }
   figure {
@@ -104,6 +136,10 @@
       }
     }
   }
+}
+section h1 {
+  font-size: 3rem;
+  margin: 1rem 1rem 3rem 1rem;
 }
 @media (max-width: 800px) {
   .content-section {

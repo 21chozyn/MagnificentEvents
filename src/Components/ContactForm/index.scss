@@ -15,8 +15,11 @@
     background-color: var(--backgroundColor1);
     display: flex;
     flex-direction: row;
+    overflow-y: scroll;
+    overflow-x: clip;
+
   }
- > svg {
+  > svg {
     z-index: 3;
     font-size: 2rem;
     position: absolute;
@@ -45,7 +48,7 @@
     display: flex;
     flex-direction: column;
     // align-items: center;
-    > div {
+    .names-container {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -88,5 +91,25 @@
         right: 0;
       }
     }
+  }
+}
+@media (max-width: 700px) {
+  .contact-form-container figure {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .form {
+    .names-container {
+      display: flex;
+      flex-direction: column !important;
+      justify-content: space-between;
+    }
+    .btn2 {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 90%;}
   }
 }

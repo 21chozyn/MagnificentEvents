@@ -30,7 +30,7 @@ const index = ({ icon, label, handleData }) => {
           name={label.split(" ")[0]}
           id={label.split(" ")[0]}
           required
-          maxlength="45"
+          maxLength="45"
           ref={inputRef}
           value={inputValue}
           className="txt-input"

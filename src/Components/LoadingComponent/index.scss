@@ -1,0 +1,27 @@
+$primary-color: white;
+@import "loaders.css/src/animations/ball-spin-fade-loader.scss";
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}
+#loading-container {
+  background-color: var(--backgroundColor);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h3{
+    top: 2rem ;
+    position: relative;
+    letter-spacing: 7px;
+  }
+}

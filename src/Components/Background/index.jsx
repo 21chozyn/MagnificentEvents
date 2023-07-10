@@ -35,6 +35,7 @@ const index = () => {
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           stroke="#ffffff"
+          key={i}
         >
           <g id="SVGRepo_bgCarrier" strokeWidth={0} />
           <g

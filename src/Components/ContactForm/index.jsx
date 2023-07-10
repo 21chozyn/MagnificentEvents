@@ -55,7 +55,6 @@ const index = () => {
     });
   };
 
-
   return (
     <div className="contact-form-container" id="contact-form">
       <CgCloseO onClick={handleCloseContactForm} />
@@ -67,7 +66,7 @@ const index = () => {
         <div className="form">
           <h2>Get in touch</h2>
           <p>24/7 We will answer you questions and answers</p>
-          <div>
+          <div className="names-container">
             <CustomTextInput
               label={"First Name"}
               icon={<FcBusinessman />}
@@ -79,22 +78,24 @@ const index = () => {
               handleData={handleData}
             />
           </div>
-          <CustomTextInput
-            label={"Email"}
-            icon={<HiOutlineMailOpen />}
-            handleData={handleData}
-          />
-          <CustomTextInput
-            label={"Phone"}
-            icon={<FcPhoneAndroid />}
-            handleData={handleData}
-          />
+          <div className="contacts-container">
+            <CustomTextInput
+              label={"Email"}
+              icon={<HiOutlineMailOpen />}
+              handleData={handleData}
+            />
+            <CustomTextInput
+              label={"Phone"}
+              icon={<FcPhoneAndroid />}
+              handleData={handleData}
+            />
 
-          <textarea
-            ref={messageRef}
-            rows={6}
-            placeholder="Tell us about your event..."
-          />
+            <textarea
+              ref={messageRef}
+              rows={6}
+              placeholder="Tell us about your event..."
+            />
+          </div>
           <div className="btn2" onClick={handleSend}>
             <span>Submit</span>
           </div>

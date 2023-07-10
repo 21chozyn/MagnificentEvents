@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 
 //Component imports
@@ -9,15 +9,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // resource imports
 import heroImg1 from "../../Images/herosection1.jpg";
 import balloonsImg from "../../Images/Balloons.jpg";
+import anime from "animejs";
 // import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 export const handleOpenContactForm = () => {
   document.getElementById("contact-form").style.display = "flex";
   document.documentElement.style.overflow = "hidden"; //to make page unscrollable
-
 };
 
 const index = () => {
-  
+  useEffect(() => {
+    anime({
+      targets: ".hero-section",
+      opacity: 1,
+      // translateY: [50,0],
+      duration: 800,
+      easing: "easeInQuad",
+
+      delay: 2500,
+    });
+  }, []);
   return (
     <>
       <div className="hero-section">
