@@ -1,7 +1,5 @@
 import React from "react";
 import "./index.scss";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
