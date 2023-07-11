@@ -1,6 +1,6 @@
 //this hook animates the list on section 3 on scroll
 import anime from "animejs";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 
 const useAnimateOnIntersection = (ref, isRight) => {
   const [isIntersecting, setIsIntersecting] = useState(false);

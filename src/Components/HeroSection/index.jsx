@@ -4,11 +4,9 @@ import "./index.scss";
 //Component imports
 import SvgBalloons from "../SvgBalloons";
 import SvgDecor from "../SvgDecor";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // resource imports
 import heroImg1 from "../../Images/herosection1.jpg";
-import balloonsImg from "../../Images/Balloons.jpg";
 import anime from "animejs";
 // import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 export const handleOpenContactForm = () => {

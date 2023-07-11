@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./index.scss";
 import decor1 from "../../Images/decor1.jpg";
 import CustomTextInput from "../CustomTextInput";
