@@ -6,7 +6,8 @@ import { createClient } from "pexels";
 import anime from "animejs";
 import useLoadImgOnIntersection from "../../Hooks/useLoadImgOnIntersection";
 import ProgressiveImg from "../ProgressiveImg";
-import pexelsKey from "../../../pexelsKey";
+import pexelsKey from "../pexelsKey";
+
 const defaultPhoto = [
   {
     id: 2880507,
