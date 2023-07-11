@@ -6,6 +6,7 @@ import { createClient } from "pexels";
 import anime from "animejs";
 import useLoadImgOnIntersection from "../../Hooks/useLoadImgOnIntersection";
 import ProgressiveImg from "../ProgressiveImg";
+import pexelsKey from "../../../pexelsKey";
 const defaultPhoto = [
   {
     id: 2880507,
@@ -40,7 +41,7 @@ const defaultPhoto = [
 
 const index = ({ searchData }) => {
   const client = createClient(
-    "NCZbqi6QUEkbIPyg9uIcwOBhfeu58q33acmxCDalBnC8lfMeQ3NCpex6"//key for pexels api
+    pexelsKey//key for pexels api
   );
   const [photos, setPhotos] = useState(defaultPhoto);
   const [showModal, setShowModal] = useState(false);
