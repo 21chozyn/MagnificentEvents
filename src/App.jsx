@@ -1,10 +1,10 @@
 import "./App.css";
 import {
+  Link,
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
-  
 } from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Header from "./Components/Header";
@@ -14,9 +14,8 @@ import About from "./Components/Pages/About";
 import Background from "./Components/Background";
 
 function App() {
-
   return (
-    <Router>
+    <Router basename={import.meta.env.DEV ? "/" : "/MagnificentEvents/"}>
       <Header />
       <Background />
       <meta
