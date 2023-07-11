@@ -1,7 +1,7 @@
 import "./App.css";
 import {
   Link,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   useLocation,
