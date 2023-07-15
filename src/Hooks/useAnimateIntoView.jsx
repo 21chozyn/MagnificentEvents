@@ -1,5 +1,5 @@
 import anime from "animejs";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 
 const useAnimateIntoView = (ref) => {
     const [isIntersecting, setIsIntersecting] = useState(false);
