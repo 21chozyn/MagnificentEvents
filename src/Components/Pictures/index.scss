@@ -14,10 +14,7 @@ h1 {
     padding: 0.5rem;
     div {
       position: relative;
-      &:hover .overlay {
-        // bottom: 10%;
-        height: 4rem;
-      }
+      
       .overlay {
         position: absolute;
         bottom: 0;
@@ -41,6 +38,11 @@ h1 {
           transform: translate(-50%, -50%);
           -ms-transform: translate(-50%, -50%);
         }
+      }
+      //
+      div:hover .overlay {
+        // bottom: 10%;
+        height: 4rem;
       }
       img {
         width: 100%;

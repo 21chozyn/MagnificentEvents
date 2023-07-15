@@ -27,7 +27,6 @@ const useAnimateIntoView = (ref) => {
       if (isIntersecting) {
         anime({
           targets: `.${ref.current.className}`,
-          opacity: 1,
           translateY: [50, 0],
           opacity:[0,1],
           delay: 0,
