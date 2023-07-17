@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./index.scss";
 const index = ({ icon, label, handleData }) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState(""); //value of input field
-  const inputRef = useRef(null);
+  const [isFocused, setIsFocused] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(""); //value of input field
+  const inputRef = React.useRef(null);
 
   const handleClick = () => {
     setIsFocused(true);
@@ -12,7 +12,7 @@ const index = ({ icon, label, handleData }) => {
     handleData({ inputValue: inputValue, label: label }); //this send data in the input up to the parent
     inputValue === "" && setIsFocused(false);
   };
-  useEffect(() => {
+  React.useEffect(() => {
     inputRef.current.focus();
   }, [isFocused]);
 

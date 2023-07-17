@@ -1,9 +1,9 @@
 import anime from "animejs";
-import  { useEffect, useState } from "react";
+import React from "react";
 
 const useAnimateIntoView = (ref) => {
-    const [isIntersecting, setIsIntersecting] = useState(false);
-    useEffect(() => {
+    const [isIntersecting, setIsIntersecting] = React.useState(false);
+    React.useEffect(() => {
       if (!ref.current) {
         console.warn(`${ref} is not of type element`);
         return;
@@ -19,7 +19,7 @@ const useAnimateIntoView = (ref) => {
       observer.observe(ref.current);
       return () => observer.disconnect();
     }, []);
-    useEffect(() => {
+    React.useEffect(() => {
       if (!ref.current) {
         console.warn(`${ref} is not of type element`);
         return;

@@ -1,10 +1,9 @@
+import  React from "react";
 import "./App.css";
 import {
-  Link,
   HashRouter as Router,
   Route,
   Routes,
-  useLocation,
 } from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Header from "./Components/Header";

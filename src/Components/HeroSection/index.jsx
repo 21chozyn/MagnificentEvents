@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.scss";
 
 //Component imports
@@ -15,7 +15,7 @@ export const handleOpenContactForm = () => {
 };
 
 const index = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     anime({
       targets: ".hero-section",
       opacity: 1,

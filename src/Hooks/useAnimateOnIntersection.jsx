@@ -1,11 +1,11 @@
 //this hook animates the list on section 3 on scroll
 import anime from "animejs";
-import  { useEffect, useState } from "react";
+import  React from "react";
 
 const useAnimateOnIntersection = (ref, isRight) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = React.useState(false);
   const deviceWidth = window.innerWidth/8; //this is to get approppriate value for translate
-  useEffect(() => {
+  React.useEffect(() => {
     if (!ref.current) {
       console.warn(`${ref} is not of type element`);
       return;
@@ -21,7 +21,7 @@ const useAnimateOnIntersection = (ref, isRight) => {
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!ref.current) {
       console.warn(`${ref} is not of type element`);
       return;

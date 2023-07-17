@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import "./index.scss";
 import decor1 from "../../Images/decor1.jpg";
 import CustomTextInput from "../CustomTextInput";
@@ -9,13 +9,13 @@ import { CgCloseO } from "react-icons/cg";
 import anime from "animejs";
 
 const index = () => {
-  const [data, setData] = useState({
+  const [data, setData] = React.useState({
     "First Name": "",
     "Last Name": "",
     Email: "",
     Phone: "",
   });
-  const messageRef = useRef(null);
+  const messageRef =React.useRef(null);
   const handleSend = () => {
     window.Email.send({
       Host: "smtp.elasticemail.com",

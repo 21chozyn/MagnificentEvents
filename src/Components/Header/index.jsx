@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./index.scss";
@@ -10,12 +10,12 @@ import anime from "animejs";
 
 const index = () => {
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setIsLoading(true);
   }, []);
-  useEffect(() => {
+  React.useEffect(() => {
     let interval;
     isLoading &&
       (interval = setInterval(() => {

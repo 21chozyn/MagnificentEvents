@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from "react";
+import React from "react";
 import "./index.scss";
 import useAnimateSlideOnIntersection from "../../Hooks/useAnimateOnIntersection";
 //image imports
@@ -21,9 +21,9 @@ import {
 } from "react-icons/hi";
 const index = () => {
   //for image switch
-  const [curPic1, setCurPic1] = useState(event1);
-  const [curpic2, setCurPic2] = useState(wedding1);
-  const [isSlided, setIsSlided] = useState(false);
+  const [curPic1, setCurPic1] = React.useState(event1);
+  const [curpic2, setCurPic2] = React.useState(wedding1);
+  const [isSlided, setIsSlided] = React.useState(false);
   const handleClickToDo = (img) => {
     // this function handles the logic of switching and sliding the images
     setIsSlided((prev) => !prev);
@@ -59,11 +59,11 @@ const index = () => {
     }
   };
 
-  const cateringRef = useRef(null);
-  const invitationRef = useRef(null);
-  const cakesRef = useRef(null);
-  const hireEquipmentRef = useRef(null);
-  const content1Ref = useRef(null);
+  const cateringRef =React.useRef(null);
+  const invitationRef = React.useRef(null);
+  const cakesRef = React.useRef(null);
+  const hireEquipmentRef = React.useRef(null);
+  const content1Ref = React.useRef(null);
 
   useAnimateSlideOnIntersection(cateringRef, false);
   useAnimateSlideOnIntersection(invitationRef, true);

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 //this function loads a lower quality photo first until a higher one is completely loaded
 const index = ({ placeholderSrc, src, ...props }) => {
   //placeholderSrc chould be lower quality src which is loaded first
-  const [imgLoaded, setImgLoaded] = useState(false); //this stores bool state which changes when higher quality picture is loaded
+  const [imgLoaded, setImgLoaded] = React.useState(false); //this stores bool state which changes when higher quality picture is loaded
 
   return (
     <>

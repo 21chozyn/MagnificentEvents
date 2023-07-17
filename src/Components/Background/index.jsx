@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.scss";
 import anime from "animejs";
 
 const index = () => {
-  const [bottleNum, setBottleNum] = useState(Math.floor(screen.width / 200)); //num of flowers to show on screen
+  const [bottleNum,] = React.useState(Math.floor(screen.width / 200)); //num of flowers to show on screen
 
-  useEffect(() => {
+ React.useEffect(() => {
     for (let i = 0; i < bottleNum; i++) {
       anime({
         targets: `._${i}`,

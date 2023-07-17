@@ -1,7 +1,7 @@
-import  { useEffect } from "react";
+import  React from "react";
 
 const useLoadImgOnIntersection = (photoLayout) => {
-  useEffect(() => {
+  React.useEffect(() => {
     const observerOptions = {
       root: null,
       // rootMargin: "-100px",

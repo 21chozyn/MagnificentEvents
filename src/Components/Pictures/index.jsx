@@ -1,5 +1,5 @@
 //this component is responsible for handling the pictures in the portfolio page
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.scss";
 import { CgCloseO } from "react-icons/cg";
 import { createClient } from "pexels";
@@ -44,14 +44,14 @@ const index = ({ searchData }) => {
   const client = createClient(
     pexelsKey//key for pexels api
   );
-  const [photos, setPhotos] = useState(defaultPhoto);
-  const [showModal, setShowModal] = useState(false);
-  const [modalPicInfo, setModalPicInfo] = useState({
+  const [photos, setPhotos] = React.useState(defaultPhoto);
+  const [showModal, setShowModal] = React.useState(false);
+  const [modalPicInfo, setModalPicInfo] = React.useState({
     src: "https://images.pexels.com/photos/17325195/pexels-photo-17325195.jpeg?auto=compress&cs=tinysrgb&h=350",
     alt: "dog",
   });
 
-  const [pictureColCount, setPictureColCount] = useState(
+  const [pictureColCount, setPictureColCount] = React.useState(
     //this usestate stores number of columns to show pictures depending on device width
     window.innerWidth < 600 ? 2 : window.innerWidth < 1000 ? 3 : 4
   );
@@ -112,20 +112,20 @@ const index = ({ searchData }) => {
     e.target.addEventListener("load",()=>{console.log("fully loaded")})
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     //this useeffect loads the default images once the page loads.
     client.photos
       .curated({ per_page: 80 })
       .then((photos) => setPhotos(photos.photos));
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     //this useeffect loads the searched images as the searchParams change
     client.photos
       .search({ query: searchData.text, per_page: 80 })
       .then((photos) => setPhotos(photos.photos));
   }, [searchData]);
-  useEffect(() => {
+  React.useEffect(() => {
     //this useeffect is responsible for changing num of picture columns
     function handleResize() {
       setPictureColCount(

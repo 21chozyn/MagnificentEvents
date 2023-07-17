@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Pictures from "../../Pictures";
 
 import "./index.scss";
@@ -7,9 +7,9 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const index = () => {
-  const [searchText, setSearchText] = useState(""); //this stores search details-text
-  const [isSearchPicture, setIsSearchPicture] = useState(true); //this stores search details-text
-  const [searchData, setSearchData] = useState({ text: "", isPicture: true });
+  const [searchText, setSearchText] = React.useState(""); //this stores search details-text
+  const [isSearchPicture, setIsSearchPicture] = React.useState(true); //this stores search details-text
+  const [searchData, setSearchData] = React.useState({ text: "", isPicture: true });
   const handleSearch = () => {
     setSearchData({ text: searchText, isPicture: isSearchPicture });
     document.querySelector("#pictures-container").scrollIntoView({
